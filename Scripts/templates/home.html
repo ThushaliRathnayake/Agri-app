@@ -1,0 +1,96 @@
+<head>
+  <title>Plant disease Detection</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Plant Disease Detection</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+<div class="container">
+
+
+  <!-- Modal -->
+
+  
+</div>
+
+
+<div class="container">
+
+
+  <!-- Modal -->
+  
+  
+</div>  
+
+<div class="container">
+  <h1 class="jumbotron bg-primary">Plant disease Detection</h1>
+  <br><br>
+  <form class="form-horizontal" action="/prediction" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Upload Your Image :</label>
+      <div class="col-sm-10">          
+        <input type="file" class="form-control" placeholder="Hours Studied"  name="my_image" id="pwd">
+      </div>
+    </div>
+
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+
+    {% if prediction %}
+  <img src="{{img_pathn}}" height="400px" width="400px">
+    <h2> Your Prediction   : <i> {{prediction}} </i></h2>
+
+    {% endif %}
+
+</div>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyBFJR2AbkwkLL29BQbO_L5ERFVqYfqef3E",
+  authDomain: "agri-app-af9c7.firebaseapp.com",
+  databaseURL: "https://agri-app-af9c7-default-rtdb.firebaseio.com",
+  projectId: "agri-app-af9c7",
+  storageBucket: "agri-app-af9c7.appspot.com",
+  messagingSenderId: "101000532731",
+  appId: "1:101000532731:web:b45277da48ed10c732565e",
+  measurementId: "G-JR5CBJ69M7"
+  };
+
+  
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
+
+
+
+</script>
