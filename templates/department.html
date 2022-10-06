@@ -1,0 +1,308 @@
+<head>
+    <title>Plant disease Detection</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      
+      @media only screen and (min-width: 600px) {
+        html {
+        scroll-behavior: smooth;
+      }
+
+
+        
+         .navbar {
+          min-height: 220px !important;
+          background-image: url("/static/navbar.jpg");
+    background-size: cover;
+         }
+      
+         .navbar-brand {
+          padding-top:35px !important;
+          float: left;
+          color:rgb(237, 245, 238) !important;
+          font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+          font-size: 45px !important;
+      
+      }
+      .navbar-nav {
+        padding-top:12px !important;
+        float: left;
+        font-size: 28px !important;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+      
+      } 
+      
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.drag-area{
+  border: 2px dashed #fff;
+  height: 300px;
+  width: 400px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #52ad5e;
+}
+.drag-area.active{
+  border: 2px solid #fff;
+}
+.drag-area .icon{
+  font-size: 50px;
+  color: #fff;
+}
+.drag-area header{
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.form-group{
+  align-items: center;
+
+}
+.form-group button{
+        font-size: 20px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: 500;
+        border: none;
+        outline: none;
+        background: #52ad5e;;
+        color: #06071a;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 435px;
+        height: 35px;
+
+      }
+
+.gap{
+    height: 5px;
+    width: 300px;
+
+}
+      
+      }
+      @media only screen and (min-width: 768px) {
+        html {
+        scroll-behavior: smooth;
+      }
+
+
+        .navbar {
+          min-height: 220px !important;
+          background-image: url("/static/navbar.jpg");
+    background-size: cover;
+         }
+      
+        .navbar-brand {
+          padding-top:35px !important;
+          float: left;
+          color:rgb(243, 250, 244) !important;
+          font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+          font-size: 45px !important;
+      
+      }
+      .navbar-nav {
+        padding-top:12px !important;
+        float: left;
+        font-size: 28px !important;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+      
+      } 
+      
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.drag-area{
+  border: 2px dashed #fff;
+  height: 300px;
+  width: 400px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #52ad5e;
+}
+.drag-area.active{
+  border: 2px solid #fff;
+}
+.drag-area .icon{
+  font-size: 50px;
+  color: #fff;
+}
+.drag-area header{
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.form-group{
+  align-items: center;
+
+}
+.form-group button{
+        font-size: 20px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: 500;
+        border: none;
+        outline: none;
+        background: #52ad5e;;
+        color: #06071a;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 435px;
+        height: 35px;
+
+      }
+
+.gap{
+    height: 5px;
+    width: 300px;
+
+}
+      }
+          </style>
+  </head>
+  
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">PLANT DISEASE DETECTOR</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <span class="navbar-text" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color:azure;">
+          WELCOME {{x}}
+        </span>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">
+  
+  
+    <!-- Modal -->
+  
+    
+  </div>
+  
+  
+  <div class="container">
+  
+  
+    <!-- Modal -->
+    
+    
+  </div>  
+  
+  <div class="container">
+    <div class="jumbotron bg-primary">
+      <h1>DO YOU HAVE ANY NEW DISEASES FOUND????</h1>
+      <h3>Upload your images of newly found diseases with their disease name. We will add the disease into system</h3>
+       </div>
+    <br><br>
+    
+  
+     
+    <div class="row">
+
+      <div class="col-sm-6">
+        <div class="uploader">
+          <form class="form-horizontal" action="/uploaded" method="post" enctype="multipart/form-data">
+          
+            <div class="drag-area">
+              <br><br>
+              <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+              <header>Upload Your Images :</header>
+              <br><br>
+                <div class="form-group">
+                  <div class="col-sm-10">          
+                    <input type="file" class="form-control" placeholder="Hours Studied"  name="files[]" id="pwd" multiple="multiple">
+                  </div>
+                </div>    
+           </div>
+           <div class="gap"></div>
+           <div class="form-group">
+        
+            <div class="col-sm-10">          
+                <label for="fname">Disease name:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+            </div>
+          </div>
+          <div class="gap"></div>
+           <div class="form-group">        
+              <!-- <div class="col-sm-offset-2 col-sm-10"> -->
+                <button type="submit" class="btn btn-success">UPLOAD</button>
+              <!-- </div> -->
+            </div>
+          </form>
+          </div>
+      </div>
+    
+    
+    
+    
+    {% if msg %}
+    <div class="container" class="col-sm-6">
+    
+      <h3 class="danger" style="background-color:#620edf;">{{ msg }}</h3>
+    
+    </div>
+    
+   
+    
+      {% endif %}
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+  </div>
+  
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+    import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+  const firebaseConfig_dep = {
+  apiKey: "AIzaSyD2TsTza_Xuw0RDq16RvpOxLHyqOHkmS_Q",
+  authDomain: "agri-department.firebaseapp.com",
+  databaseURL: "https://agri-department-default-rtdb.firebaseio.com",
+  projectId: "agri-department",
+  storageBucket: "agri-department.appspot.com",
+  messagingSenderId: "813939696253",
+  appId: "1:813939696253:web:db24cdea3d55def6648714"
+};
+
+// Initialize Firebase
+const depapp = initializeApp(firebaseConfig_dep,"secondary");
+const depdatabase = getDatabase(depapp);
+const depauth = getAuth(depapp);
+
+  </script>
