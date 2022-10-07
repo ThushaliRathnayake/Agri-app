@@ -19,12 +19,12 @@ from firebase_admin import db
 from firebase_admin import storage
 
 cred = credentials.Certificate(
-    "./ServiceAccountKey.json")
+    "ServiceAccountKey.json")
 farmers = firebase_admin.initialize_app(
     cred, {'storageBucket': 'agri-app-af9c7.appspot.com', 'databaseURL': 'https://agri-app-af9c7-default-rtdb.firebaseio.com'})
 
 depcred = credentials.Certificate(
-    "./agri-department-firebase-adminsdk-759dj-04fc05ee9e.json")
+    "agri-department-firebase-adminsdk-759dj-04fc05ee9e.json")
 department = firebase_admin.initialize_app(depcred, {
                                            'storageBucket': "agri-department.appspot.com", 'databaseURL': "https://agri-department-default-rtdb.firebaseio.com"}, name="other")
 
@@ -48,7 +48,7 @@ app = Flask(__name__)
 dic = {'Apple___Apple_scab': 0, 'Apple___Black_rot': 1, 'Apple___Cedar_apple_rust': 2, 'Apple___healthy': 3, 'Blueberry___healthy': 4, 'Cherry_(including_sour)___Powdery_mildew': 5, 'Cherry_(including_sour)___healthy': 6, 'Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot': 7, 'Corn_(maize)___Common_rust_': 8, 'Corn_(maize)___Northern_Leaf_Blight': 9, 'Corn_(maize)___healthy': 10, 'Grape___Black_rot': 11, 'Grape___Esca_(Black_Measles)': 12, 'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)': 13, 'Grape___healthy': 14, 'Orange___Haunglongbing_(Citrus_greening)': 15, 'Peach___Bacterial_spot': 16, 'Peach___healthy': 17,
        'Pepper,_bell___Bacterial_spot': 18, 'Pepper,_bell___healthy': 19, 'Potato___Early_blight': 20, 'Potato___Late_blight': 21, 'Potato___healthy': 22, 'Raspberry___healthy': 23, 'Soybean___healthy': 24, 'Squash___Powdery_mildew': 25, 'Strawberry___Leaf_scorch': 26, 'Strawberry___healthy': 27, 'Tomato___Bacterial_spot': 28, 'Tomato___Early_blight': 29, 'Tomato___Late_blight': 30, 'Tomato___Leaf_Mold': 31, 'Tomato___Septoria_leaf_spot': 32, 'Tomato___Spider_mites Two-spotted_spider_mite': 33, 'Tomato___Target_Spot': 34, 'Tomato___Tomato_Yellow_Leaf_Curl_Virus': 35, 'Tomato___Tomato_mosaic_virus': 36, 'Tomato___healthy': 37}
 
-model = load_model('./train1.h5')
+model = load_model('train1.h5')
 
 model.make_predict_function()
 
@@ -78,10 +78,10 @@ def main():
 def get_pred():
     if request.method == 'POST':
         img = request.files['my_image']
-        #img_path = 'C:/Users/USER/Desktop/firebase/./static/'+img.filename
+        #img_path = 'C:/Users/USER/Desktop/firebase/Scripts/static/'+img.filename
         #img_path= './static/'+img.filename
         img_pathn = 'static/'+img.filename
-        img_path = './static/'+img.filename
+        img_path = 'static/'+img.filename
         img.save(img_path)
         fileName = img_path
         bucket = storage.bucket(app=farmers)
@@ -116,18 +116,30 @@ def dep():
     ref_ = db.reference('Department/' + current_depuser + '/userdetails/username',app=department, url="https://agri-department-default-rtdb.firebaseio.com/")
     username_ = ref_.get()
     current_depuser = request.form.get("depcustId")
-    return render_template("department.html", x = username_)
+
+    postsdep = db.reference('Inquiry').get()
+    if postsdep is not None:
+        vals = list(postsdep.values())
+        postsdep = json.dumps(vals)
+    else:
+        postsdep = {}    
+    print(postsdep)
+
+
+
+    return render_template("department.html", x = username_, postsdep = postsdep)
 
 
 @app.route("/uploaded", methods=['POST'])
 def loggedD():
     files = request.files.getlist('files[]')
     dname = request.form['fname']
+    pname = request.form['pname']
     print(type(dname))
     for file in files:
-        img_path = './static/upload/' + \
+        img_path = 'static/upload/' + \
             dname+'__'+file.filename
-        temp = dname+'__'+file.filename
+        temp = pname+'__'+dname+'__'+file.filename
         file.save(img_path)
 
         fileName = img_path
@@ -143,18 +155,25 @@ def loggedD():
         key = (temp).split(".")[0]
         users_ref.update({key: temp})
 
+    postsdep = db.reference('Inquiry').get()
+    if postsdep is not None:
+        vals = list(postsdep.values())
+        postsdep = json.dumps(vals)
+    else:
+        postsdep = {}
+
     #img = request.files['my_images']
     # print(request.files)
-    #img_path = 'C:/Users/USER/Desktop/firebase/./static/'+img.filename
+    #img_path = 'C:/Users/USER/Desktop/firebase/Scripts/static/'+img.filename
     #img_pathn= 'static/'+img.filename
     msg = "Files Uploaded Successfully"
-    return render_template("department.html", msg = msg)
+    return render_template("department.html", postsdep = postsdep, msg = msg)
 
 
 @app.route("/prediction", methods=['POST'])
 def logged():
     img = request.files['my_image']
-    img_path = './static/'+img.filename
+    img_path = 'static/'+img.filename
     img_pathn ='static/'+img.filename
     img.save(img_path)
     fileName = img_path

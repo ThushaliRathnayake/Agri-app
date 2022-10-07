@@ -3,8 +3,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
     <style>
       
       @media only screen and (min-width: 600px) {
@@ -90,6 +92,33 @@
     width: 300px;
 
 }
+
+.logout{
+      top: 50%;
+      left: 50%;
+      background-color: #f1f1f1;
+      color: black;
+      font-size: 16px;
+      padding: 16px 30px;
+      border: none;
+      cursor: pointer;
+      border-radius: 15px;
+      text-align: center;
+      opacity: 0.6;
+
+    }
+
+    .logout:hover {
+      background-color: black;
+      color: white;
+}
+
+    .logout-btn{
+      position: relative;
+      padding-top:5%;
+      padding-left: 90%;
+    }
+      
       
       }
       @media only screen and (min-width: 768px) {
@@ -174,6 +203,32 @@
     width: 300px;
 
 }
+
+.logout{
+      top: 50%;
+      left: 50%;
+      background-color: #f1f1f1;
+      color: black;
+      font-size: 16px;
+      padding: 16px 30px;
+      border: none;
+      cursor: pointer;
+      border-radius: 15px;
+      text-align: center;
+      opacity: 0.6;
+
+    }
+
+    .logout:hover {
+      background-color: black;
+      color: white;
+}
+
+    .logout-btn{
+      position: relative;
+      padding-top:5%;
+      padding-left: 90%;
+    }
       }
           </style>
   </head>
@@ -181,13 +236,24 @@
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
+        <ul>
+          <li class="active"><a style="color:aliceblue; font-size: 18px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" href="#section1">CHECK INQUIRIES</a></li>
+        </ul>
         <a class="navbar-brand" href="#">PLANT DISEASE DETECTOR</a>
       </div>
+      
       <ul class="nav navbar-nav navbar-right">
         <span class="navbar-text" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color:azure;">
           WELCOME {{x}}
         </span>
+        <!-- <button onclick="location.href = '/'" id="logout" class="logout">LOGOUT</button> -->
       </ul>
+      
+      
+    </div>
+    <div class="logout-btn">
+      <button onclick="location.href = '/'" id="logout" class="logout">LOGOUT</button>
+
     </div>
   </nav>
   
@@ -235,6 +301,15 @@
                 </div>    
            </div>
            <div class="gap"></div>
+
+           <div class="form-group">
+        
+            <div class="col-sm-10">          
+                <label for="fname">Plant name:</label><br>
+                <input type="text" id="pname" name="pname"><br>
+            </div>
+          </div>
+          <div class="gap"></div>
            <div class="form-group">
         
             <div class="col-sm-10">          
@@ -265,21 +340,40 @@
    
     
       {% endif %}
+      
     
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <br>
+    <br><br><br>
+    <section id="section1">
+    <div class="jumbotron" style="justify-content:center; height: fit-content;">
+      <div><h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ; text-align: center;">INQUIRIES</h1>
+        <br>
+        <table class="table table-striped  table-hover" id="table">
+        </table>
+    </div></div>
+    </section>
     
   
   </div>
   
+  <script>
+    var a  = {{ postsdep | tojson}};
+    var as = JSON.parse(a);
+        $('#table').bootstrapTable({
+    columns: [{
+      field: "username",
+      title: 'NAME'
+    }, {
+      field: "inquiry",
+      title: 'INQUIRY'
+    }, {
+      field: "email",
+      title: 'CONTACT MAIL'
+    }],
+    data: as
+  })
+  </script>
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
@@ -305,4 +399,4 @@ const depapp = initializeApp(firebaseConfig_dep,"secondary");
 const depdatabase = getDatabase(depapp);
 const depauth = getAuth(depapp);
 
-  </script>
+</script>

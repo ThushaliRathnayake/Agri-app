@@ -456,9 +456,9 @@ const depauth = getAuth(depapp);
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-  
-        alert(errorMessage);
+        const errorMessage = errorCode.substr(5);
+          
+        alert(errorMessage)
       // ..
       });
   
@@ -487,9 +487,9 @@ const depauth = getAuth(depapp);
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-
-      alert(errorMessage);
+        const errorMessage = errorCode.substr(5);
+          
+        alert(errorMessage)
     // ..
     });
 
@@ -516,9 +516,9 @@ const depauth = getAuth(depapp);
         })
         .catch((error) => {
           const errorCode = error.code;
-          const errorMessage = error.message;
-  
-          alert(errorMessage);
+        const errorMessage = errorCode.substr(5);
+          
+        alert(errorMessage)
 
     });
   
@@ -545,9 +545,9 @@ const depauth = getAuth(depapp);
         })
         .catch((error) => {
           const errorCode = error.code;
-          const errorMessage = error.message;
-  
-          alert(errorMessage);
+        const errorMessage = errorCode.substr(5);
+          
+        alert(errorMessage)
     });
   
    });
