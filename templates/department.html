@@ -360,6 +360,15 @@
   <script>
     var a  = {{ postsdep | tojson}};
     var as = JSON.parse(a);
+
+    for (var i = 0; i < as.length; i++) {
+      if(as[i].hasOwnProperty('image')){
+  as[i].image = "https://storage.googleapis.com/agri-app-af9c7.appspot.com/" + as[i].image;
+      }
+
+}
+
+
         $('#table').bootstrapTable({
     columns: [{
       field: "username",
@@ -370,6 +379,9 @@
     }, {
       field: "email",
       title: 'CONTACT MAIL'
+    },{
+      field: "image",
+      title: 'UPLOADED IMAGE'
     }],
     data: as
   })

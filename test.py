@@ -212,6 +212,23 @@ def logged():
     
     return render_template("home.html", prediction=p, img_pathn=img_pathn, x=username_.upper(), posts=posts, background = "/static/navbar.jpg")
 
+@app.route("/inquire", methods=['POST'])
+def inquired():
+    img = request.files['inquiry_image']
+    name = request.form['username']
+    inquiry_path = 'static/'+img.filename
+    img.save(inquiry_path)
+
+    fileName = inquiry_path
+    bucket = storage.bucket(app=farmers)
+    blob = bucket.blob(fileName)
+    blob.upload_from_filename(fileName)
+    blob.make_public()
+
+    ref_inquiry = db.reference('Inquiry/' + name)
+    ref_inquiry.update({"image": fileName})
+
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
