@@ -68,6 +68,17 @@ def predict_label(img_path):
     result = dict((new_val, new_k) for new_k, new_val in dic.items()).get(indx)
     return result
 
+@app.route('/service', methods=['POST','GET'])
+def service():
+    return render_template('service.html')
+@app.route('/gallery', methods=['POST','GET'])
+def gallery():
+    return render_template('gallery.html')
+@app.route('/about', methods=['POST','GET'])
+def about():
+    return render_template('about.html')
+
+
 
 @app.route("/", methods=['GET', 'POST'])
 def main():
@@ -232,3 +243,4 @@ def inquired():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
