@@ -19,18 +19,18 @@ from firebase_admin import db
 from firebase_admin import storage
 
 cred = credentials.Certificate(
-    "ServiceAccountKey.json")
+    "agri-app1-firebase-adminsdk-li4tm-1313ccb370.json")
 farmers = firebase_admin.initialize_app(
-    cred, {'storageBucket': 'agri-app-af9c7.appspot.com', 'databaseURL': 'https://agri-app-af9c7-default-rtdb.firebaseio.com'})
+    cred, {'storageBucket': 'agri-app1.appspot.com', 'databaseURL': 'https://agri-app1-default-rtdb.firebaseio.com'})
 
 depcred = credentials.Certificate(
-    "agri-department-firebase-adminsdk-759dj-04fc05ee9e.json")
+    "agri-department1-firebase-adminsdk-r4d7z-f07f65e3b1.json")
 department = firebase_admin.initialize_app(depcred, {
-                                           'storageBucket': "agri-department.appspot.com", 'databaseURL': "https://agri-department-default-rtdb.firebaseio.com"}, name="other")
+                                           'storageBucket': "agri-department1.appspot.com", 'databaseURL': "https://agri-department1-default-rtdb.firebaseio.com"}, name="other")
 
 
 # import firebase_admin.db
-# db = firebase_admin.db.reference(path='/', app=farmers, url="https://agri-app-af9c7-default-rtdb.firebaseio.com/")
+# db = firebase_admin.db.reference(path='/', app=farmers, url="https://agri-app1-default-rtdb.firebaseio.com/")
 
 # db = farmers.db
 # from firebase_admin import db
@@ -39,7 +39,7 @@ department = firebase_admin.initialize_app(depcred, {
 # # db = firebase_admin.db
 # storage = farmers.storage
 
-#depdb = firebase_admin.db.reference(path='/', app=department, url="https://agri-app-af9c7-default-rtdb.firebaseio.com/")
+#depdb = firebase_admin.db.reference(path='/', app=department, url="https://agri-app1-default-rtdb.firebaseio.com/")
 # depstorage = department.storage
 
 
@@ -112,7 +112,7 @@ def button():
     if posts is not None:
         vals = list(posts.values())
         for i in range(len(vals)):
-            vals[i]["filename"] = "https://storage.googleapis.com/agri-app-af9c7.appspot.com/static/" + vals[i]["filename"]
+            vals[i]["filename"] = "https://storage.googleapis.com/agri-app1.appspot.com/static/" + vals[i]["filename"]
         posts = json.dumps(vals)
     else:
         posts = {}    
@@ -124,7 +124,7 @@ def button():
 def dep():
     global current_depuser
     current_depuser = request.form.get("depcustId")
-    ref_ = db.reference('Department/' + current_depuser + '/userdetails/username',app=department, url="https://agri-department-default-rtdb.firebaseio.com/")
+    ref_ = db.reference('Department/' + current_depuser + '/userdetails/username',app=department, url="https://agri-department1-default-rtdb.firebaseio.com/")
     username_ = ref_.get()
     current_depuser = request.form.get("depcustId")
 
@@ -161,7 +161,7 @@ def loggedD():
         print(current_depuser)
         path = 'Department/' + current_depuser
         ref = db.reference(
-            path, app=department, url="https://agri-department-default-rtdb.firebaseio.com/")
+            path, app=department, url="https://agri-department1-default-rtdb.firebaseio.com/")
         users_ref = ref.child('submissions')
         key = (temp).split(".")[0]
         users_ref.update({key: temp})
@@ -193,9 +193,9 @@ def logged():
     blob.upload_from_filename(fileName)
     blob.make_public()
     ref = db.reference('Farmers/' + current_user, app=farmers,
-                       url="https://agri-app-af9c7-default-rtdb.firebaseio.com/")
+                       url="https://agri-app1-default-rtdb.firebaseio.com/")
     ref_ = db.reference('Farmers/' + current_user + '/userdetails/username',
-                        app=farmers, url="https://agri-app-af9c7-default-rtdb.firebaseio.com/")
+                        app=farmers, url="https://agri-app1-default-rtdb.firebaseio.com/")
     username_ = ref_.get()
     print(username_)
     key = (img.filename).split(".")[0]
@@ -209,12 +209,12 @@ def logged():
     users_ref.update({"prediction": p})
     users_ref.update({"date": ct})
     posts = db.reference('Farmers/' + current_user + '/submissions', app=farmers,
-                         url="https://agri-app-af9c7-default-rtdb.firebaseio.com/").get()
+                         url="https://agri-app1-default-rtdb.firebaseio.com/").get()
 
     if posts is not None:
         vals = list(posts.values())
         for i in range(len(vals)):
-            vals[i]["filename"] = "https://storage.googleapis.com/agri-app-af9c7.appspot.com/static/" + vals[i]["filename"]
+            vals[i]["filename"] = "https://storage.googleapis.com/agri-app1.appspot.com/static/" + vals[i]["filename"]
         posts = json.dumps(vals)
     else:
         posts = {}
