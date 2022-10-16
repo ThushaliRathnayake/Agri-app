@@ -790,6 +790,7 @@ ul.short_ls li {
   -moz-background-size: cover;
   -o-background-size: cover;
   -ms-background-size: cover;
+  height: 300px;
 }
 
 .number-w3three-info h5 {
