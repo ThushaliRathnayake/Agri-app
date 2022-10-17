@@ -375,37 +375,7 @@
       {% endif %}
     
     </div>
-<section id="section1">
-<div class="table-responsive" style="justify-content:center; height: fit-content;">
-        <table class="table table-striped  table-hover" style="width:max-content" id="table">
-        </table>
 
-
-</div>
-</section>
-</div>
-</div>
-
-
-
-
-<script>
-  var a  = {{ posts | tojson}};
-  var as = JSON.parse(a);
-      $('#table').bootstrapTable({
-  columns: [{
-    field: "date",
-    title: 'DATE'
-  }, {
-    field: "filename",
-    title: 'FILENAME'
-  }, {
-    field: "prediction",
-    title: 'PREDICTION'
-  }],
-  data: as
-})
-</script>
 
 <script type="module">
   // Import the functions you need from the SDKs you need
