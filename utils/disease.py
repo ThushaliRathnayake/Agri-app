@@ -480,5 +480,11 @@ disease_dic = {
         <br/>2. Inspect transplants prior to purchase. Choose only transplants showing no clear symptoms.
         
         <br/>3. Avoid planting in fields where tomato root debris is present, as the virus can survive long-term in roots.
-        <br/>4. Wash hands with soap and water before and during the handling of plants to reduce potential spread between plants."""
+        <br/>4. Wash hands with soap and water before and during the handling of plants to reduce potential spread between plants.""",
+
+
+    'Invalid': """ <b>Crop</b>: Tomato <br/>Disease: Yellow Leaf Curl Virus<br/>
+
+        <br/><br/>please upload valid image for view correct result"""
+
 }

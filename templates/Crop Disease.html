@@ -379,48 +379,46 @@
   <div class="container">
 <br>
   
-<div class="row">
-
-  <div class="col-sm-6">
-    <div class="uploader">
-      <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
-      
-        <div class="drag-area">
-          <br><br>
-          <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-          <header>Upload Your Image</header>
-          <br><br>
-            <div class="form-group">
-              <div class="col-sm-10">          
+<br><br>
+  <section class="blog_w3ls pb-5" id="why">
+		<div class="container pb-xl-5 pb-lg-3">
+			<h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Find out which disease has been caught by your plant</h3>
+      <br>
+      <h5 class="blog-title card-title m-0" style="text-align: center;">Please Upload The Image</h5>
+			<div class="row">
+				<br><br><br>
+        <div class="col-lg-2 col-md-6 contact-form-txt"></div>
+        <div class="col-lg-8 col-md-6 contact-form-txt">
+          <form action="/submit" method="post" enctype="multipart/form-data" enctype="multipart/form-data">
+            <div class="w3pvt-wls-contact-mid">
+              <div class="form-group contact-forms"><br><br>
+                <label for="fname">Image</label><br>
                 <input type="file" class="form-control-upload" placeholder="Hours Studied"  name="my_image" id="pwd">
               </div>
-            </div>    
-       </div>
-       <div class="gap"></div>
-       <div class="form-group">        
-          <!-- <div class="col-sm-offset-2 col-sm-10"> -->
-            <button type="submit" class="btn btn-success">SUBMIT</button>
-          <!-- </div> -->
+              <button type="submit" class="btn sent-butnn" style="height: 40px;">Upload</button>
+            </div>
+          </form>
         </div>
-      </form>
       </div>
-  </div>
+    </div>
+  </section>
 
 
+  <section class="blog_w3ls pb-5" id="why">
+    <div class="row">
+      <div class="col-lg-5 col-md-6 contact-form-txt">
+        {% if prediction %}
+        <img src="{{img_pathn}}" height="400px" width="400px">
+      </div>
 
-
-{% if prediction %}
-<div class="container" class="col-sm-6">
-
-      <img src="{{img_pathn}}" height="400px" width="400px">
-
-</div>
-
-</div>
-<br>
-<div class="jumbotron" style="justify-content: center; background-color:#52ad5e;">
-            <p class="text-center" style="color: black; font-size: 22px;">{{ prediction }}</p>
-</div>
+      <div class="col-lg-7 col-md-6 contact-form-txt">
+        <div class="jumbotron" style="justify-content: center; background-color:#c7c7c7;">
+                    <p class="text-center" style="color: black; font-size: 18px;text-align: left !important;">{{ prediction }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
 
   {% endif %}
 

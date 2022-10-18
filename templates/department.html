@@ -281,7 +281,19 @@
     </div>
   </div>
   <!-- //banner -->
-
+    <!-- short -->
+    <div class="using-border py-3">
+      <div class="inner_breadcrumb  ml-4">
+        <ul class="short_ls">
+          <li>
+            <a href="/">Home</a>
+            <span>/ /</span>
+          </li>
+          <li>Department</li>
+        </ul>
+      </div>
+    </div>
+    <!-- //short-->
   
   <div class="container">
   
@@ -300,62 +312,45 @@
     
   </div>  
   
+  <br><br>
+  <section class="blog_w3ls pb-5" id="why">
+		<div class="container pb-xl-5 pb-lg-3">
+			<h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">DO YOU HAVE ANY NEW DISEASES FOUND????</h3>
+      <br>
+      <h5 class="blog-title card-title m-0">Upload your images of newly found diseases with their disease name. We will add the disease into system</h5>
+			<div class="row">
+				<br><br><br><br>
+        <div class="col-lg-2 col-md-6 contact-form-txt"></div>
+        <div class="col-lg-8 col-md-6 contact-form-txt">
+          <form action="/uploaded" method="post" enctype="multipart/form-data">
+            <div class="w3pvt-wls-contact-mid">
+              <div class="form-group contact-forms"><br><br>
+                <label for="fname">Image</label><br>
+                <input type="file" class="form-control" placeholder="Hours Studied"  name="files[]" id="pwd" multiple="multiple" style="height: 40px;">
+              </div>
+              <div class="form-group contact-forms">
+                <label for="fname">Plant name</label><br>
+                <input  type="text" id="pname" name="pname" class="form-control" placeholder="Plant name" required="" style="height: 40px;">
+              </div>
+              <div class="form-group contact-forms">
+                <label for="fname">Disease name</label><br>
+                <input type="text" id="fname" name="fname" class="form-control" placeholder="Disease name" required="" style="height: 40px;"> 
+              </div>
+              <button type="submit" class="btn sent-butnn" style="height: 40px;">Upload</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
   <div class="container">
-    <div class="jumbotron bg-primary">
-      <h1>DO YOU HAVE ANY NEW DISEASES FOUND????</h1>
-      <h3>Upload your images of newly found diseases with their disease name. We will add the disease into system</h3>
-       </div>
-    <br><br>
-    
-  
      
     <div class="row">
 
-      <div class="col-sm-6">
-        <div class="uploader">
-          <form class="form-horizontal" action="/uploaded" method="post" enctype="multipart/form-data">
-          
-            <div class="drag-area">
-              <br><br>
-              <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-              <header>Upload Your Images :</header>
-              <br><br>
-                <div class="form-group">
-                  <div class="col-sm-10">          
-                    <input type="file" class="form-control" placeholder="Hours Studied"  name="files[]" id="pwd" multiple="multiple">
-                  </div>
-                </div>    
-           </div>
-           <div class="gap"></div>
-
-           <div class="form-group">
-        
-            <div class="col-sm-10">          
-                <label for="fname">Plant name:</label><br>
-                <input type="text" id="pname" name="pname"><br>
-            </div>
-          </div>
-          <div class="gap"></div>
-           <div class="form-group">
-        
-            <div class="col-sm-10">          
-                <label for="fname">Disease name:</label><br>
-                <input type="text" id="fname" name="fname"><br>
-            </div>
-          </div>
-          <div class="gap"></div>
-           <div class="form-group">        
-              <!-- <div class="col-sm-offset-2 col-sm-10"> -->
-                <button type="submit" class="btn btn-success">UPLOAD</button>
-              <!-- </div> -->
-            </div>
-          </form>
-          </div>
-      </div>
-    
-    
-    
-    
     {% if msg %}
     <div class="container" class="col-sm-6">
     
@@ -412,7 +407,7 @@
     }],
     data: as
   })
-  </script>
+  </script><br>
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
