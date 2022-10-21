@@ -483,7 +483,7 @@ disease_dic = {
         <br/>4. Wash hands with soap and water before and during the handling of plants to reduce potential spread between plants.""",
 
 
-    'Invalid': """ <b>Crop</b>: Tomato <br/>Disease: Yellow Leaf Curl Virus<br/>
+    'Invalid_Image': """ <b></b>Invalid Image <br/>
 
         <br/><br/>please upload valid image for view correct result"""
 
